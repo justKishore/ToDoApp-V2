@@ -8,7 +8,14 @@
     <title>To Do List</title>
   </head>
   <body>
-    <h1>It's a weekday!</h1>
-    <p>Why are you not working!</p>
+    <!-- % 'Scriptlet' tag, for control-flow, no output -->
+    <!-- Scriptlet tag works on line by line basis, so need to put opening and closing tag around each line of non html code -->
+
+    <% if(kindOfDay === "Saturday"|| kindOfDay === "Sunday"){ %>
+    <!-- %= Outputs the value into the template (HTML escaped) Refer Docs-->
+    <h1 style="color: green">It's a <%= kindOfDay %> ToDo List</h1>
+    <% } else{ %>
+    <h1 style="color: blue">It's a <%= kindOfDay %> ToDo List</h1>
+    <% } %>
   </body>
 </html>
