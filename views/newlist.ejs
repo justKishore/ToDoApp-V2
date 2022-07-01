@@ -1,0 +1,28 @@
+<!-- New list without scriptlets and full logic on server -->
+
+<!-- This is main file from 4. commits -->
+
+<!-- Valid HTML for ejs file -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+  </head>
+  <body>
+    <h1><%= kindOfDay %></h1>
+
+    <ul>
+      <li>Order Snacks</li>
+      <li>Pickup Snacks</li>
+      <li>Eat Snacks</li>
+    </ul>
+
+    <form action="/" method="post">
+      <input type="text" name="newItem" placeholder="Enter new ToDo item" />
+      <button type="submit" name="button">Add</button>
+    </form>
+  </body>
+</html>
