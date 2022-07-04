@@ -12,12 +12,17 @@
     <title>To Do List</title>
   </head>
   <body>
+    
     <h1><%= kindOfDay %></h1>
-
     <ul>
-      <li>Order Snacks</li>
+      <!-- <li>Order Snacks</li>
       <li>Pickup Snacks</li>
-      <li>Eat Snacks</li>
+      <li>Eat Snacks</li> -->
+      <!-- Add list items -->
+      <% for(var i=0; i<newListItems.length; i++){ %>
+        <li><%= newListItems[i] %></li>
+      
+      <% } %>
     </ul>
 
     <form action="/" method="post">

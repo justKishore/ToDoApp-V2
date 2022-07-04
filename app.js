@@ -4,12 +4,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
+var items = ["Order Snacks", "Pickup Snacks", "Eat Snacks"]; // todo item array
 
 app.set("view engine", "ejs"); // ejs documentation
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // GET Route
 
+// first home route
 app.get("/", function (req, res) {
   var today = new Date();
 
@@ -58,15 +60,19 @@ app.get("/", function (req, res) {
   // console.log(today.toLocaleDateString("en-US", options)); //en-US for english
 
   var day = today.toLocaleDateString("en-US", options);
-  res.render("newlist", { kindOfDay: day });
+
+  // passing data from server
+  res.render("newlist", { kindOfDay: day, newListItems: items });
 });
 
 // POST Route
 
 app.post("/", function (req, res) {
   var item = req.body.newItem;
-  console.log(item);
-  res.send("Check log");
+  items.push(item);
+  // console.log(item);
+  // res.send("Check log");
+  res.redirect("/");
 });
 
 app.listen(3000, function () {
