@@ -2,18 +2,21 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+// const path = require("path");
 
 const app = express();
-var items = ["Order Snacks", "Pickup Snacks", "Eat Snacks"]; // todo item array
+let items = []; // todo item array
 
 app.set("view engine", "ejs"); // ejs documentation
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static("public"));
 
 // GET Route
 
 // first home route
 app.get("/", function (req, res) {
-  var today = new Date();
+  let today = new Date();
 
   // var currentDay = today.getDay();
 
@@ -50,7 +53,7 @@ app.get("/", function (req, res) {
   // Refer - "https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript"
 
   // options for toLocaleDateString
-  var options = {
+  let options = {
     weekday: "long",
     day: "numeric",
     month: "long",
@@ -59,7 +62,7 @@ app.get("/", function (req, res) {
   // toLocaleDateString - Returns a date as a string value appropriate to the host environment's current locale.
   // console.log(today.toLocaleDateString("en-US", options)); //en-US for english
 
-  var day = today.toLocaleDateString("en-US", options);
+  let day = today.toLocaleDateString("en-US", options);
 
   // passing data from server
   res.render("newlist", { kindOfDay: day, newListItems: items });
@@ -68,9 +71,9 @@ app.get("/", function (req, res) {
 // POST Route
 
 app.post("/", function (req, res) {
-  var item = req.body.newItem;
+  let item = req.body.newItem;
   items.push(item);
-  // console.log(item);
+  // console.log(items);
   // res.send("Check log");
   res.redirect("/");
 });

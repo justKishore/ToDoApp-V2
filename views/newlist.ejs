@@ -5,29 +5,50 @@
 <!-- Valid HTML for ejs file -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Do List</title>
-  </head>
-  <body>
-    
-    <h1><%= kindOfDay %></h1>
-    <ul>
-      <!-- <li>Order Snacks</li>
-      <li>Pickup Snacks</li>
-      <li>Eat Snacks</li> -->
-      <!-- Add list items -->
-      <% for(var i=0; i<newListItems.length; i++){ %>
-        <li><%= newListItems[i] %></li>
-      
-      <% } %>
-    </ul>
 
-    <form action="/" method="post">
-      <input type="text" name="newItem" placeholder="Enter new ToDo item" />
-      <button type="submit" name="button">Add</button>
-    </form>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Do List</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="icons/tasks.png" />
+</head>
+
+<body>
+
+  <div class="box" id="heading">
+    <h1>
+      <%= kindOfDay %>
+    </h1>
+  </div>
+
+  <!-- ul to div and li to p -->
+  <div class="box">
+
+    <!-- <li>Order Snacks</li>
+        <li>Pickup Snacks</li>
+        <li>Eat Snacks</li> -->
+    <!-- Add list items -->
+
+    <% for(var i=0; i<newListItems.length; i++){ %>
+      <!-- <li><%= newListItems[i] %></li> -->
+      <div class="item">
+        <!-- checkbox -->
+        <!-- <input type="checkbox"> -->
+        <input class="label__checkbox" type="checkbox" />
+        <p>
+          <%= newListItems[i] %>
+        </p>
+      </div>
+      <% } %>
+        <form class="item" action="/" method="post">
+          <!-- autocomplete = off - no autocomplete recommendations -->
+          <input type="text" name="newItem" placeholder="Enter New ToDo Item" autocomplete="off">
+          <button type="submit" name="button">+</button>
+        </form>
+  </div>
+
+</body>
+
 </html>
