@@ -75,6 +75,10 @@ app.get("/work", function (req, res) {
   res.render("newlist", { listTitle: "Work List", newListItems: workList });
 });
 
+app.get("/about", function (req, res) {
+  res.render("about");
+});
+
 // POST Route
 
 app.post("/", function (req, res) {
