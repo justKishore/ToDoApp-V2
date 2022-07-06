@@ -19,7 +19,7 @@
 
   <div class="box" id="heading">
     <h1>
-      <%= kindOfDay %>
+      <%= listTitle %>
     </h1>
   </div>
 
@@ -45,7 +45,7 @@
         <form class="item" action="/" method="post">
           <!-- autocomplete = off - no autocomplete recommendations -->
           <input type="text" name="newItem" placeholder="Enter New ToDo Item" autocomplete="off">
-          <button type="submit" name="button">+</button>
+          <button type="submit" name="list" value=<%=listTitle %>>+</button>
         </form>
   </div>
 

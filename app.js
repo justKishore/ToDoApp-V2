@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 let items = []; // todo item array
+let workList = []; // work todo
 
 app.set("view engine", "ejs"); // ejs documentation
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -65,17 +66,29 @@ app.get("/", function (req, res) {
   let day = today.toLocaleDateString("en-US", options);
 
   // passing data from server
-  res.render("newlist", { kindOfDay: day, newListItems: items });
+  res.render("newlist", { listTitle: day, newListItems: items });
+});
+
+// work list
+
+app.get("/work", function (req, res) {
+  res.render("newlist", { listTitle: "Work List", newListItems: workList });
 });
 
 // POST Route
 
 app.post("/", function (req, res) {
   let item = req.body.newItem;
-  items.push(item);
-  // console.log(items);
-  // res.send("Check log");
-  res.redirect("/");
+  console.log(req.body);
+  if (req.body.list === "Work") {
+    workList.push(item);
+    res.redirect("/work");
+  } else {
+    items.push(item);
+    // console.log(items);
+    // res.send("Check log");
+    res.redirect("/");
+  }
 });
 
 app.listen(3000, function () {
