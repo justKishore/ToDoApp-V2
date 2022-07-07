@@ -7,8 +7,8 @@ const bodyParser = require("body-parser");
 // requiring our date.js
 const date = require(__dirname + "/date.js");
 const app = express();
-let items = []; // todo item array
-let workList = []; // work todo
+const items = []; // todo item array. Able to push into a const array. Inside object or arrays can be changed, however array can't be re-assigned
+const workList = []; // work todo
 
 app.set("view engine", "ejs"); // ejs documentation
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +20,7 @@ app.use(express.static("public"));
 // first home route
 app.get("/", function (req, res) {
   // passing data from server
-  let day = date();
+  const day = date.getDate();
   res.render("newlist", { listTitle: day, newListItems: items });
 });
 
@@ -37,7 +37,7 @@ app.get("/about", function (req, res) {
 // POST Route
 
 app.post("/", function (req, res) {
-  let item = req.body.newItem;
+  const item = req.body.newItem;
   console.log(req.body);
   if (req.body.list === "Work") {
     workList.push(item);
