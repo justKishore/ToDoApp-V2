@@ -1,4 +1,5 @@
 //jshint esversion:6
+// ToDo app v2
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
-// GET Route
+// GET Routes
 
 // first home route
 app.get("/", function (req, res) {
@@ -34,7 +35,7 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-// POST Route
+// POST Routes
 
 app.post("/", function (req, res) {
   const item = req.body.newItem;
